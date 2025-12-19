@@ -1,0 +1,24 @@
+{
+  "version": "1.0",
+  "models": [
+    {
+      "id": "base",
+      "requirements": {
+        "ram_gb": 4,
+        "arch": [
+          "amd64",
+          "arm64"
+        ]
+      },
+      "variants": [
+        {
+          "id": "cpu",
+          "url": "https://example.com/model.large.tar.gz",
+          "size_gb": 1000,
+          "checksum": "sha256:123"
+        }
+      ]
+    }
+  ],
+  "signature": "962a9add4d09f88ec98addcccf3a04223a0d2c429e5c9115573763dedc671a1e53dc5089dd613a231e081b8851f01c7b3d55b6eb51bbda1ef3f3b699c5a28f07"
+}

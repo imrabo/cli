@@ -1,0 +1,30 @@
+# Node
+node_modules/
+dist/
+lib-cov/
+coverage/
+*.lcov
+.npm
+.eslintcache
+.stylelintcache
+.node_repl_history
+*.tsbuildinfo
+
+# Go
+runtime/imrabo-runtime
+runtime/imrabo-runtime.exe
+*.log
+
+# System / IDE
+.DS_Store
+.vscode/
+.idea/
+*.swp
+*.bak
+*.tmp
+
+# App Data (Local)
+state.json
+imrabo.lock
+runtime.log
+metadata.json
