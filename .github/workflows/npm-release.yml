@@ -1,0 +1,48 @@
+name: Publish to npm
+
+on:
+  push:
+    tags:
+      - 'v*'   # triggers only when you push version tags like v1.0.0
+
+jobs:
+  publish:
+    name: Publish package
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+
+    steps:
+      # 1. Checkout repo
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # 2. Setup Node + npm registry
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          registry-url: 'https://registry.npmjs.org'
+
+      # 3. Install dependencies
+      - name: Install dependencies
+        working-directory: cli
+        run: npm ci
+
+      # 4. Build project
+      - name: Build
+        working-directory: cli
+        run: npm run build --if-present
+
+      # 5. Verify package before publishing (IMPORTANT safety step)
+      - name: Verify package contents
+        working-directory: cli
+        run: npm pack --dry-run
+
+      # 6. Publish to npm
+      - name: Publish to npm
+        working-directory: cli
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: npm publish --access public
