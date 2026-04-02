@@ -1,6 +1,6 @@
 {
   "name": "@imrabo/cli",
-  "version": "0.1.0-alpha.1",
+  "version": "0.0.2",
   "description": "The control plane for the imrabo local AI runtime",
   "main": "dist/index.ts",
   "bin": {
